@@ -9,9 +9,9 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var txtSearch: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editBtn: UIBarButtonItem!
     
     let vm = ProductsViewModel(productsService: ProductsService())
     
@@ -20,6 +20,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.getProducts {
+            if self.vm.filteredProducts.isEmpty {
+                self.tableView.isHidden = true
+            } else {
+                self.tableView.isHidden = false
+            }
             self.tableView.reloadData()
         }
         
@@ -32,9 +37,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.refreshControl = refreshControl
+        
+        editBtn.target = self
+        editBtn.action = #selector(editBtnAction)
     }
     
-    @IBAction func editBtnAction(_ sender: Any) {
+    
+    @objc func editBtnAction() {
         tableView.isEditing.toggle()
     }
     
@@ -72,12 +81,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         vm.filteredProducts.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ProductVC = storyboard?.instantiateViewController(withIdentifier: "productUI") as! ProductViewController
+        ProductVC.product = vm.filteredProducts[indexPath.row]
+        navigationController?.pushViewController(ProductVC, animated: true)
+    }
+    
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = textField.text, !text.isEmpty {
             vm.filteredProducts = vm.products.filter { $0.title.lowercased().contains(text.lowercased()) }
         } else {
             vm.filteredProducts = vm.products
         }
+        
+        if vm.filteredProducts.isEmpty {
+            tableView.isHidden = true
+        } else {
+            tableView.isHidden = false
+        }
+        
         tableView.reloadData()
     }
 
@@ -87,7 +110,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.reloadData()
         }
         refreshControl.endRefreshing()
+        txtSearch.text = ""
     }
+    
+    
 
 }
 
