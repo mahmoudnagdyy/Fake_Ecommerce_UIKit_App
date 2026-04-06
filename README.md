@@ -10,6 +10,7 @@ https://github.com/mahmoudnagdyy/Fake_Ecommerce_UIKit_App
 ## 📱 Features
 
 * 🧾 Display products using **UITableView**
+* 📦 Display Product Detail Using **Navigation Controller**
 * 🔍 Search functionality using **UITextField**
 * ✏️ Edit & delete items with **swipe actions**
 * ♻️ Dynamic filtering of products
@@ -102,6 +103,7 @@ git clone https://github.com/mahmoudnagdyy/Fake_Ecommerce_UIKit_App.git
 * Handling **TableView editing & swipe actions**
 * Implementing **search & filtering logic**
 * Writing cleaner and more maintainable code
+* Using **Navigation Controller**
 
 ---
 
