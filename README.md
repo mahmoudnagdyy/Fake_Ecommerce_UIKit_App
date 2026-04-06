@@ -62,8 +62,8 @@ This project follows the **MVVM (Model-View-ViewModel)** pattern:
 ### 🗑️ Delete (Swipe Actions)
 <img src="https://github.com/mahmoudnagdyy/Fake_Ecommerce_UIKit_App/blob/main/Fake_Ecommerce_UIKit/project_Images/swipeAction.png" width="300"/>
 
-### Product Detail
-<img src="https://github.com/mahmoudnagdyy/Fake_Ecommerce_UIKit_App/blob/main/Fake_Ecommerce_UIKit/project_Images/swipeAction.png" width="300"/>
+### 📦 Product Detail
+<img src="https://raw.githubusercontent.com/mahmoudnagdyy/Fake_Ecommerce_UIKit_App/main/Fake_Ecommerce_UIKit/project_Images/product_detail.png" width="300"/>
 
 ---
 
