@@ -81,13 +81,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         vm.filteredProducts.swapAt(sourceIndexPath.row, destinationIndexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ProductVC = storyboard?.instantiateViewController(withIdentifier: "productUI") as! ProductViewController
-        ProductVC.product = vm.filteredProducts[indexPath.row]
-        navigationController?.pushViewController(ProductVC, animated: true)
-    }
-    
-    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = textField.text, !text.isEmpty {
             vm.filteredProducts = vm.products.filter { $0.title.lowercased().contains(text.lowercased()) }
@@ -113,7 +106,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         txtSearch.text = ""
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let productVC = segue.destination as? ProductViewController, let indexPath = tableView.indexPathForSelectedRow {
+            productVC.product = vm.filteredProducts[indexPath.row]
+        }
+    }
 
 }
 

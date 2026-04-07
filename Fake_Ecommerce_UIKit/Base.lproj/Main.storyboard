@@ -130,6 +130,7 @@
                                             <outlet property="ratingLbl" destination="4ty-US-Ws7" id="Lj0-Ea-lal"/>
                                             <outlet property="stockLbl" destination="wY9-h2-drv" id="Rbu-QM-ULI"/>
                                             <outlet property="titleLbl" destination="MEl-R3-98j" id="gd6-aP-Cah"/>
+                                            <segue destination="fN1-6o-RQb" kind="show" id="XbT-fI-ymo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -171,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TKN-tU-KPK">
-                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <rect key="frame" x="0.0" y="172" width="393" height="680"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9gP-8p-x7c">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="471.66666666666669"/>
